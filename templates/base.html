@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  {% load i18n staticfiles %}
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+  <meta name='title' content="{% block meta_title %}{% endblock %}" />
+
+  <title>Запись на прием к врачу {% block title %}{% endblock %}</title>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/semantic.css' %}">
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap-datepicker3.standalone.css' %}">
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}">
+
+  <!-- Included CSS Files (Compressed) -->
+  {% block extracss %}{% endblock extracss %}
+
+  <script src="{% static 'js/modernizr.js' %}"></script>
+  <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+</head>
+
+<body class="pushable" style="position: static;">
+  {% include '_sidebar.html' %}
+
+  <div class="pusher">
+    {% csrf_token %}
+    {% include '_nav.html' %}
+
+    {% block content %}
+      {% include '_content.html' %}
+    {% endblock %}
+
+    {% include '_footer.html' %}
+  </div>
+
+  {% include 'js/_doctors.html' %}
+  {% include 'js/_timeslots.html' %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
+  <script src="http://cdn.ractivejs.org/latest/ractive.js"></script>
+  <script src="http://cdn.jsdelivr.net/ractive.adaptors-backbone/latest/ractive-adaptors-backbone.min.js"></script>
+
+  <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/semantic.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/moment-with-locales.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap-datepicker.ru.min.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/models.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/doctors.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/timeslots.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+
+  {% block extrajs %}{% endblock %}
+
+</body>
+</html>

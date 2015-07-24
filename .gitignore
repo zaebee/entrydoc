@@ -1,0 +1,14 @@
+*.pyc
+*.swo
+*~
+.idea
+.ropeproject/
+*.egg-info/
+dist/
+*.db
+*.swp
+*.zip
+*.orig
+*.mo
+.env
+static/cache
