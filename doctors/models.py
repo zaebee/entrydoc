@@ -53,7 +53,7 @@ class Schedule(models.Model):
     class Meta:
         verbose_name = 'Расписание врача'
         verbose_name_plural = 'Расписание врачей'
-        unique_together = ('day_of_week', 'hour')
+        unique_together = ('day_of_week', 'hour', 'doctor')
 
     def __str__(self):
         return 'Запись на прием %s в %s' % (self.day_of_week.strftime('%d.%m.%Y'),

@@ -2,18 +2,17 @@
 {% verbatim %}
 
 <script id="time-slots-template" type="text/ractive">
-  <div class="ui fluid vertical menu">
+  <div class="ui styled fluid accordion">
 
     {{#each slots}}
-    <a on-click="showForm" class="{{#active}}active{{/active}} {{#if disabled(hour)}}disabled{{/if}} item">
-      <div class="content">
-      <i class="large {{disabled(hour) ? 'red' : 'green' }} clock middle aligned icon"></i>
-      <span class="text">{{hour_title}} {{#if active && !disabled(hour)}}({{formatDay(selectedDay, 'DD.MM.YYYY')}}) - записаться на прием{{/if}}</span>
+      <div on-click="showForm" class="title">
+        <i class="large {{disabled(hour) ? 'red' : 'green' }} clock middle aligned icon"></i>
+        <span class="text">{{hour_title}} </span>
       </div>
 
+      <div class="content order">
       {{#if !disabled(hour)}}
-      <div class="content transition hidden order">
-        <div class="ui divider"></div>
+        <p>Запись на прием {{formatDay(selectedDay, 'DD MMM YYYY')}}</p>
 
         {{#if errors}}
         <div class="ui error message">
@@ -22,6 +21,12 @@
             {{#each errors.patient}}
             <li>{{@key}}. {{this}}</li>
             {{/each}}
+            {{#if errors.doctor}}
+            <li>Вы не выбрали доктора</li>
+            {{/if}}
+            {{#if errors.day_of_week}}
+            <li>Вы не выбрали день недели</li>
+            {{/if}}
           </ul>
         </div>
         {{/if}}
@@ -31,7 +36,10 @@
         </div>
         {{/if}}
 
-        <div class="ui {{#if errors}}error{{/if}} {{#if success}}success{{/if}} form">
+        <div class="ui form">
+          <div class="ui inverted dimmer">
+            <div class="ui text loader">Секундочку</div>
+          </div>
           <div class="two fields">
             <div class="field">
               <input placeholder="Ваше имя" type="text" value="{{patient.first_name}}">
@@ -45,9 +53,10 @@
           </div>
           <button on-click="submit" class="ui button" type="submit">Записаться</button>
         </div>
-      </div>
+      {{else}}
+      <div class="ui negative message">Время занято</div>
       {{/if}}
-    </a>
+      </div>
     {{/each}}
   </div>
 </script>

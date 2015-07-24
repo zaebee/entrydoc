@@ -16,23 +16,20 @@ var app = app || {};
         return !!this.get('schedules').findWhere({hour: hour})
       },
       formatDay: function(day, format) {
-        return moment(day).format(format);
+        return moment(day).locale('ru').format(format);
       },
     },
     adapt: [ Ractive.adaptors.Backbone ],
+    onrender: function() {
+      console.log(this.el);
+      $(this.el).find('.accordion').accordion();
+    },
   });
 
   app.timeSlots.on({
     showForm: function(event) {
       app.timeSlots.set('errors', {});
       app.timeSlots.set('success', false);
-      var $node = $(event.node).not('.active').not('.disabled');
-      if ($node.length) {
-        this.set('slots.*.active', false);
-        this.set(event.keypath + '.active', true);
-        $node.parents().find('.visible.order').transition('vertical flip out');
-        $node.find('.hidden.order').transition('vertical flip in');
-      }
     },
 
     submit: function(event) {
@@ -48,20 +45,19 @@ var app = app || {};
         hour: event.context.hour,
       });
 
-      $node.parents('.form').addClass('loading');
+      $node.parent().find('.dimmer').addClass('active');
       schedule.save(null, {
         error: function(model, response) {
-          $node.parents('.form').removeClass('loading');
+          $node.parent().find('.dimmer').removeClass('active');
           app.timeSlots.set('errors', response.responseJSON);
         },
         success: function(model, response) {
-          window.n = $node;
-          $node.parents('.form').removeClass('loading');
-          $node.parents('.form').hide();
+          $node.parent().find('.dimmer').removeClass('active');
           app.timeSlots.set('errors', {});
           app.timeSlots.set('success', true);
           setTimeout(function(){
             app.timeSlots.get('schedules').add(model);
+            app.timeSlots.set('success', false);
           }, 2000);
         },
       });
