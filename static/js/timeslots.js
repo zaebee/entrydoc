@@ -51,6 +51,7 @@ var app = app || {};
       $node.parents('.form').addClass('loading');
       schedule.save(null, {
         error: function(model, response) {
+          $node.parents('.form').removeClass('loading');
           app.timeSlots.set('errors', response.responseJSON);
         },
         success: function(model, response) {
