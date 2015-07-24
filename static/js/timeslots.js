@@ -55,6 +55,7 @@ var app = app || {};
           $node.parent().find('.dimmer').removeClass('active');
           app.timeSlots.set('errors', {});
           app.timeSlots.set('success', true);
+          $('.page.dimmer').dimmer('show');
           setTimeout(function(){
             app.timeSlots.get('schedules').add(model);
             app.timeSlots.set('success', false);
