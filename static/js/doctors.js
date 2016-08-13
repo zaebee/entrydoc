@@ -2,30 +2,36 @@ var app = app || {};
 
 (function (app) {
 
-  app.doctorCollection = new app.Doctors;
+  app.keywordCollection = new app.Keywords;
 
-  app.doctorBox = new Ractive({
-    el: '#doctorBox',
-    template: '#doctor-box-template',
+  app.keywordBox = new Ractive({
+    el: '#keywordBox',
+    template: '#keyword-box-template',
     data: {
-      doctors: app.doctorCollection,
+      keywords: app.keywordCollection,
     },
     adapt: [ Ractive.adaptors.Backbone ],
     onrender: function() {
       var self = this;
       $(this.el).find('select').dropdown({
         onChange: function(value, text, $selectedItem) {
-          self.set('selectedDoctor', value);
+          self.set('selectedKeyword', value);
         }
+      });
+
+      $(this.el).find('.ui.search').search({
+        apiSettings: {
+          action: 'search keywords'
+        },
       });
     },
   });
 
-  app.doctorCollection.fetch();
+  app.keywordCollection.fetch();
 
-  app.doctorBox.observe({
-    selectedDoctor: function(doctorId) {
-      if (doctorId) {
+  app.keywordBox.observe({
+    selectedKeyword: function(keywordId) {
+      if (keywordId) {
         $('.dimmer.active').dimmer('hide');
       } else {
         $('.dimmer.active').dimmer('show');

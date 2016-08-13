@@ -2,18 +2,19 @@ var app = app || {};
 
 (function (app) {
 
-  var schedules = new app.Schedules;
+  var reports = new app.KeywordReports;
 
-  app.timeSlots = new Ractive({
+  app.reports = new Ractive({
     el: '#timeSlots',
     template: '#time-slots-template',
     data: {
+      _: _,
       slots: app.slots,
-      schedules: schedules,
+      reports: reports,
       patient: {},
       errors: {},
       disabled: function(hour) {
-        return !!this.get('schedules').findWhere({hour: hour})
+        return !!this.get('reports').findWhere({hour: hour})
       },
       formatDay: function(day, format) {
         return moment(day).locale('ru').format(format);
@@ -26,10 +27,21 @@ var app = app || {};
     },
   });
 
-  app.timeSlots.on({
+  app.reports.on({
     showForm: function(event) {
-      app.timeSlots.set('errors', {});
-      app.timeSlots.set('success', false);
+      app.reports.set('errors', {});
+      app.reports.set('success', false);
+    },
+
+    showWordstatAlso: function(event, data) {
+      event.original.preventDefault();
+      console.log(event, data);
+      var report = new app.KeywordReports(data);
+    },
+
+    showWordstatWith: function(event, data) {
+      event.original.preventDefault();
+      console.log(event, data);
     },
 
     submit: function(event) {
@@ -40,7 +52,7 @@ var app = app || {};
       var schedule = new app.Schedule({
         patient: this.get('patient'),
         hour: this.get('patient'),
-        doctor: this.get('selectedDoctor'),
+        keyword: this.get('selectedKeyword'),
         day_of_week: this.get('selectedDay'),
         hour: event.context.hour,
       });
@@ -49,30 +61,30 @@ var app = app || {};
       schedule.save(null, {
         error: function(model, response) {
           $node.parent().find('.dimmer').removeClass('active');
-          app.timeSlots.set('errors', response.responseJSON);
+          app.reports.set('errors', response.responseJSON);
         },
         success: function(model, response) {
           $node.parent().find('.dimmer').removeClass('active');
-          app.timeSlots.set('errors', {});
-          app.timeSlots.set('success', true);
+          app.reports.set('errors', {});
+          app.reports.set('success', true);
           $('.page.dimmer').dimmer('show');
           setTimeout(function(){
-            app.timeSlots.get('schedules').add(model);
-            app.timeSlots.set('success', false);
+            app.reports.get('reports').add(model);
+            app.reports.set('success', false);
           }, 2000);
         },
       });
     },
   });
 
-  app.timeSlots.observe({
-    'selectedDoctor selectedDay': function() {
-      var doctorId = this.get('selectedDoctor');
+  app.reports.observe({
+    'selectedKeyword selectedDay': function() {
+      var keywordId = this.get('selectedKeyword');
       var day = this.get('selectedDay');
-      if (doctorId && day) {
-        schedules.fetch({
+      if (keywordId && day) {
+        reports.fetch({
           data: {
-            doctor: doctorId,
+            keyword: keywordId,
             day_of_week: day,
           }
         });
@@ -80,15 +92,14 @@ var app = app || {};
     },
   });
 
-  app.doctorBox.observe({
-    selectedDoctor: function(doctorId) {
-      if (doctorId) {
+  app.keywordBox.observe({
+    selectedKeyword: function(keywordId) {
+      if (keywordId) {
         var day = app.today.format('YYYY-MM-DD');
-        var day = app.timeSlots.get('selectedDay') || day;
-        app.$calendar.data('datepicker').update(day);
+        var day = app.reports.get('selectedDay') || day;
 
-        app.timeSlots.set('selectedDay', day);
-        app.timeSlots.set('selectedDoctor', doctorId);
+        app.reports.set('reports', app.keywordBox.get('keywords').get(keywordId).get('reports'));
+        app.reports.set('selectedKeyword', keywordId);
 
       }
     },

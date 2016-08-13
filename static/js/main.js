@@ -9,20 +9,12 @@ $(document).ready(function() {
     }
   });
 
+  $.fn.api.settings.api = {
+    'search keywords' : '/api/v1/keywords/?query={query}',
+    'get keywords' : '/api/v1/keywords/',
+    'get reports' : '/api/v1/reports/',
+  };
   moment.locale('ru');
   app.today = moment();
-
-  app.$calendar = $('#datepicker').datepicker({
-    startDate: new Date,
-    language: 'ru',
-    daysOfWeekDisabled: "0,6",
-    todayHighlight: true,
-    toggleActive: true,
-    format: 'yyyy-mm-dd'
-  })
-  .on('changeDate', function(e) {
-    var day = e.format();
-    app.timeSlots.set('selectedDay', day);
-  });
 
 });

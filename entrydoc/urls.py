@@ -28,6 +28,7 @@ urlpatterns = [
 urlpatterns += [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('doctors.urls')),
+    url(r'^api/v1/', include('keywords.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

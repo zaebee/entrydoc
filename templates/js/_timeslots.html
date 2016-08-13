@@ -14,58 +14,60 @@
 
   <div class="ui styled fluid accordion">
 
-    {{#each slots}}
+    {{#each reports}}
       <div on-click="showForm" class="title">
         <i class="large {{disabled(hour) ? 'red' : 'green' }} clock middle aligned icon"></i>
-        <span class="text">{{hour_title}} </span>
+        <span class="text">{{wordstat_id}} ({{data.length}}) </span>
       </div>
 
       <div class="content order">
-      {{#if !disabled(hour)}}
-        <p>Запись на прием {{formatDay(selectedDay, 'DD MMM YYYY')}}</p>
+        <p>Отчет {{formatDay(date_created, 'DD MMM YYYY')}}</p>
 
         {{#if errors}}
         <div class="ui error message">
           <div class="header">Мы не смогли вас записать</div>
           <ul class="list">
-            {{#each errors.patient}}
+            {{#each errors.reports}}
             <li>{{@key}}. {{this}}</li>
             {{/each}}
-            {{#if errors.doctor}}
-            <li>Вы не выбрали доктора</li>
-            {{/if}}
             {{#if errors.day_of_week}}
             <li>Вы не выбрали день недели</li>
             {{/if}}
           </ul>
         </div>
         {{/if}}
+
         {{#if success}}
         <div class="ui success message">
           <div class="header">Вы записаны на прием к врачу</div>
         </div>
         {{/if}}
 
-        <div class="ui form">
+        <div class="ui row">
           <div class="ui inverted dimmer">
             <div class="ui text loader">Секундочку</div>
           </div>
-          <div class="two fields">
-            <div class="field">
-              <input placeholder="Ваше имя" type="text" value="{{patient.first_name}}">
+          <div class="ui items">
+            {{#each data}}
+            <div class="item">
+              <div class="content">
+                <a href="#" class="header">{{Phrase}}</a>
+                <div class="description">
+                  <a on-click="showWordstatAlso:{{this}}" title="Ищут также" href="#" class="ui label">
+                    <i class="meh icon"></i> 
+                    {{SearchedAlso.length}}
+                  </a>
+                    <a on-click="showWordstatWith:{{this}}" title="Подзапросы" class="ui label">
+                    <i class="fork icon"></i> 
+                    {{SearchedWith.length}}
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="field">
-              <input placeholder="Ваша фамилия" type="text" value="{{patient.last_name}}">
-            </div>
+            {{/each}}
           </div>
-          <div class="field">
-            <textarea rows="2" placeholder="Дополнительная информация" value="{{patient.info}}">{{patient.info}}</textarea>
-          </div>
-          <button on-click="submit" class="ui button" type="submit">Записаться</button>
         </div>
-      {{else}}
-      <div class="ui negative message">Время занято</div>
-      {{/if}}
+
       </div>
     {{/each}}
   </div>

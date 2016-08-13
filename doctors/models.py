@@ -47,7 +47,7 @@ class Schedule(models.Model):
     day_of_week = models.DateField('День недели', validators=[validate_working_day])
     hour = models.PositiveIntegerField('Время', choices=HOURS)
 
-    doctor = models.ForeignKey(Doctor, related_name='schedules')
+    doctor = models.ForeignKey(Doctor, related_name='schedules', blank=True, null=True)
     patient = models.ForeignKey(Patient, related_name='schedules', blank=True, null=True)
 
     class Meta:
@@ -58,4 +58,3 @@ class Schedule(models.Model):
     def __str__(self):
         return 'Запись на прием %s в %s' % (self.day_of_week.strftime('%d.%m.%Y'),
                                                           self.get_hour_display())
-
