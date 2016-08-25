@@ -2,7 +2,7 @@
 
 from rest_framework import routers
 
-from keywords import views
+from crypto import views
 router = routers.SimpleRouter()
 
 router.register(r'keywords', views.KeywordViewSet)

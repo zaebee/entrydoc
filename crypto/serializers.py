@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from rest_framework import serializers
 
 
-from keywords.models import Keyword, KeywordReport, GraphicCard
+from crypto.models import Keyword, KeywordReport, GraphicCard
 
 
 class KeywordReportSerializer(serializers.ModelSerializer):

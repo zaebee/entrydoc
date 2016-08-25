@@ -27,7 +27,7 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/v1/', include('keywords.urls')),
+    url(r'^api/v1/', include('crypto.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -8,8 +8,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, filters
 from rest_framework.response import Response
 
-from keywords.models import Keyword, KeywordReport, GraphicCard
-from keywords.serializers import KeywordSerializer, KeywordReportSerializer, GraphicCardSerializer
+from crypto.models import Keyword, KeywordReport, GraphicCard
+from crypto.serializers import KeywordSerializer, KeywordReportSerializer, GraphicCardSerializer
 
 
 class KeywordViewSet(viewsets.ModelViewSet):
