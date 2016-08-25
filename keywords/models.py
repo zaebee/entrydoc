@@ -85,6 +85,17 @@ class KeywordReport(models.Model):
         return response.json()
 
 
+class GraphicCard(models.Model):
+    name = models.CharField(u'название', max_length=200)
+
+    class Meta:
+        verbose_name = u'Видеокарта'
+        verbose_name_plural = u'Видеокарты'
+
+    def __str__(self):
+        return u'Видеокарта: %s' % (self.name)
+
+
 def getWordstatReport(sender, instance, created, **kwargs):
     if created:
         try:

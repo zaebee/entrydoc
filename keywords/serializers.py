@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from rest_framework import serializers
 
 
-from keywords.models import Keyword, KeywordReport
+from keywords.models import Keyword, KeywordReport, GraphicCard
 
 
 class KeywordReportSerializer(serializers.ModelSerializer):
@@ -29,3 +29,9 @@ class KeywordSerializer(serializers.ModelSerializer):
         report.getWordstatReport()
         return keyword
 
+
+class GraphicCardSerializer(serializers.Serializer):
+    name = serializers.CharField()
+
+    class Meta:
+        model = GraphicCard

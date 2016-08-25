@@ -27,7 +27,6 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include('doctors.urls')),
     url(r'^api/v1/', include('keywords.urls')),
 ]
 

@@ -2,36 +2,36 @@ var app = app || {};
 
 (function (app) {
 
-  app.keywordCollection = new app.Keywords;
+  app.deviceCollection = new app.Devices;
 
-  app.keywordBox = new Ractive({
+  app.deviceBox = new Ractive({
     el: '#keywordBox',
     template: '#keyword-box-template',
     data: {
-      keywords: app.keywordCollection,
+      devices: app.deviceCollection,
     },
     adapt: [ Ractive.adaptors.Backbone ],
     onrender: function() {
       var self = this;
       $(this.el).find('select').dropdown({
         onChange: function(value, text, $selectedItem) {
-          self.set('selectedKeyword', value);
+          self.set('selectedDevice', value);
         }
       });
 
       $(this.el).find('.ui.search').search({
         apiSettings: {
-          action: 'search keywords'
+          action: 'search devices'
         },
       });
     },
   });
 
-  app.keywordCollection.fetch();
+  app.deviceCollection.fetch();
 
-  app.keywordBox.observe({
-    selectedKeyword: function(keywordId) {
-      if (keywordId) {
+  app.deviceBox.observe({
+    selectedDevice: function(deviceId) {
+      if (deviceId) {
         $('.dimmer.active').dimmer('hide');
       } else {
         $('.dimmer.active').dimmer('show');

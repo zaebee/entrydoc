@@ -7,6 +7,7 @@ router = routers.SimpleRouter()
 
 router.register(r'keywords', views.KeywordViewSet)
 router.register(r'reports', views.KeywordReportViewSet)
+router.register(r'devices', views.GraphicCardViewSet)
 
 urlpatterns = router.urls
 

@@ -11,6 +11,15 @@ var app = app || {};
     model: app.Keyword
   });
 
+  app.Device = Backbone.Model.extend({
+    urlRoot: '/api/v1/devices/',
+  });
+
+  app.Devices = Backbone.Collection.extend({
+    url: '/api/v1/devices/',
+    model: app.Device
+  });
+
   app.KeywordReport = Backbone.Model.extend({
     urlRoot: '/api/v1/reports/',
   });

@@ -92,13 +92,13 @@ var app = app || {};
     },
   });
 
-  app.keywordBox.observe({
+  app.deviceBox.observe({
     selectedKeyword: function(keywordId) {
       if (keywordId) {
         var day = app.today.format('YYYY-MM-DD');
         var day = app.reports.get('selectedDay') || day;
 
-        app.reports.set('reports', app.keywordBox.get('keywords').get(keywordId).get('reports'));
+        app.reports.set('reports', app.deviceBox.get('keywords').get(keywordId).get('reports'));
         app.reports.set('selectedKeyword', keywordId);
 
       }
