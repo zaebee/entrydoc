@@ -12,7 +12,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="static/favicon.ico" />
   <meta name='title' content="" />
 
-  <title>Генератор ядра ключевых фраз </title>
+  <title>Эфириум и эфир классик - вся инфа про майнинг, видео карты и курсы криптовалют</title>
 
   <link rel="stylesheet" type="text/css" media="screen" href="static/css/semantic.css">
   <link rel="stylesheet" type="text/css" media="screen" href="static/css/bootstrap-datepicker3.standalone.css">
@@ -102,7 +102,7 @@
 
 <script id="keyword-box-template" type="text/ractive">
   <div class="ui search field">
-    <input class="prompt" type="text" value="{{query}}" placeholder="Напиши ключевую фразу" name="query" id="keyword-query">
+    <input class="prompt" type="text" value="{{query}}" placeholder="Поиск по названию видеокарты ..." name="query" id="keyword-query">
   </div>
 
   <div class="field">
@@ -111,7 +111,6 @@
     <table class="ui celled table">
       <thead>
         <tr>
-          <th>Производитель</th>
           <th>Модель видеокарты</th>
           <th>Алгоритм</th>
           <th>Скорость</th>
@@ -123,16 +122,24 @@
       <tbody>
         {{#each devices}}
         <tr>
-          <td>{{Company}}</td>
-          <td>{{Name}}</td>
+          <td>
+            <h4 class="ui image header">
+              <img src="https://www.cryptocompare.com{{LogoUrl}}" class="ui mini rounded image">
+              <div class="content">
+                {{Name}}
+                <div class="sub header">{{Company}}
+                </div>
+              </div>
+            </h4>
+          </td>
           <td>{{Algorithm}}</td>
-          <td>{{HashesPerSecond}}</td>
-          <td>{{PowerConsumption}}</td>
+          <td>{{HashesPerSecond / 1000 / 1000}} MH/S</td>
+          <td>{{PowerConsumption}} Вт</td>
           <td>{{Cost}} {{Currency}}</td>
           <td colspan="2">
-            <button class="ui primary button">
+            <a target="_blank" href="https://cryptocompare.com{{Url}}" class="ui primary button">
               Купить карту
-            </button>
+            </a>
           </td>
         </tr>
         {{/each}}
