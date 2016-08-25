@@ -9,7 +9,7 @@
   <div class="field">
   <p>{{devices.Message}}</p>
 
-    <table class="ui celled table">
+    <table class="ui sortable celled table">
       <thead>
         <tr>
           <th>Модель видеокарты</th>
@@ -17,7 +17,7 @@
           <th>Скорость</th>
           <th>Энергопотребление</th>
           <th>Цена</th>
-          <th colspan="2"></th>
+          <th class="no-sort" colspan="2"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,9 +34,9 @@
             </h4>
           </td>
           <td>{{Algorithm}}</td>
-          <td>{{HashesPerSecond / 1000 / 1000}} MH/S</td>
-          <td>{{PowerConsumption}} Вт</td>
-          <td>{{Cost}} {{Currency}}</td>
+          <td data-sort-value="{{HashesPerSecond}}">{{HashesPerSecond / 1000 / 1000}} MH/S</td>
+          <td data-sort-value="{{PowerConsumption}}">{{PowerConsumption}} Вт</td>
+          <td data-sort-value="{{Cost}}">{{Cost}} {{Currency}}</td>
           <td colspan="2">
             <a target="_blank" href="https://cryptocompare.com{{Url}}" class="ui primary button">
               Купить карту

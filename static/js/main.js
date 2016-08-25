@@ -16,5 +16,6 @@ $(document).ready(function() {
   };
   moment.locale('ru');
   app.today = moment();
+  $('table').tablesort();
 
 });
