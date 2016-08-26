@@ -1,0 +1,14 @@
+{% load i18n %}
+{% verbatim %}
+
+<script id="chart-box-template" type="text/ractive">
+  <div class="left aligned column">
+    <div class="ui basic buttons">
+    <div on-click="changeChart:'USD'" class="ui button {{#if tsym == 'USD'}}active{{/if}}">ETH/USD</div>
+      <div on-click="changeChart:'BTC'" class="ui button {{#if tsym == 'BTC'}}active{{/if}}">ETH/BTC</div>
+      <div on-click="changeChart:'RUB'" class="ui button {{#if tsym == 'RUB'}}active{{/if}}">ETH/RUB</div>
+    </div>
+  </div>
+  <div id="chartdiv"></div>												
+</script>
+{% endverbatim %}

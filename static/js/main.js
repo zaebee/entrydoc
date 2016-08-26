@@ -18,6 +18,6 @@ $(document).ready(function() {
   moment.locale('ru');
   app.today = moment();
   app.calculatorBox.set('stats', window.ethereumStats);
-  loadChart(app);
+  //loadChart(app);
 
 });
