@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="ui vertical stripe segment">
+    <div class="ui top aligned stackable grid container">
+
+      <div class="row">
+        <div class="center aligned column">
+          <h3 class="ui header">Калькулятор майнинга эфириума (eth)</h3>
+
+          <div class="ui middle aligned grid" id="calculatorBox">
+            <div class="left aligned two column row">
+              <div class="wide column">
+                {% include '_calc_form.html' %}
+              </div>
+
+              <div class="wide column">
+                {% include '_calc_table.html' %}
+              </div>
+            </div>
+            <div class="centered column row">
+              <button class="hige ui primary button">Рассчитать</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
