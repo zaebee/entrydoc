@@ -14,8 +14,9 @@ $(document).ready(function() {
     'get keywords' : '/api/v1/keywords/',
     'get reports' : '/api/v1/reports/',
   };
+  $('table').tablesort();
   moment.locale('ru');
   app.today = moment();
-  $('table').tablesort();
+  app.calculatorBox.set('stats', window.ethereumStats);
 
 });

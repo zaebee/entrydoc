@@ -1,0 +1,114 @@
+{% load i18n %}
+{% verbatim %}
+
+<script id="calculator-box-template" type="text/ractive">
+  <div class="left aligned two column row">
+    <div class="wide column">
+      {{>calc_form}}
+    </div>
+
+    <div class="wide column">
+      {{>calc_table}}
+    </div>
+  </div>
+  <div class="centered column row">
+    <button class="hige ui primary button">Рассчитать</button>
+  </div>
+
+  {{#partial calc_form}}
+    <div class="ui small form">
+      <div class="ui labeled input field">
+        <div class="ui basic label">Хэшрейт (MH/s)</div>
+        <input type="text" value="{{userHashRate}}" placeholder="в MH/s..">
+      </div>
+
+      <div class="ui labeled input field">
+        <div class="ui basic label">Хэшрейт сети (GH/s)</div>
+        <input disabled type="text" value="{{networkHashRate}}" placeholder="в GH/s..">
+      </div>
+
+      <div class="ui labeled input field">
+        <div class="ui basic label">Время блока (сек.)</div>
+        <input disabled type="text" value="{{stats.blockTime}}" placeholder="в секундах..">
+      </div>
+
+      <div class="ui labeled input field">
+        <div class="ui basic label">Цена за 1eth ($)</div>
+        <input disabled type="text" value="{{stats.priceUsd}}" placeholder="в долларах..">
+      </div>
+
+      <div class="ui labeled input field">
+        <div class="ui basic label">Мощность</div>
+        <input type="text" value="" placeholder="в ваттах..">
+      </div>
+
+      <!--
+      <div class="ui labeled input field">
+        <div class="ui basic label">Тариф</div>
+        <input type="text" placeholder="в Руб/КВ/ч..">
+      </div>
+      -->
+
+    </div>
+  {{/partial}}
+
+  {{#partial calc_table}}
+    <table class="ui basic large table table">
+      <thead>
+        <tr>
+          <th class="six wide">Период</th>
+          <th class="five wide">Эфириум</th>
+          <th class="five wide">Доллары</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <h4 class="ui header">
+              <div class="content">
+                <div class="sub header">Час</div>
+              </div>
+            </h4>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="ui header">
+              <div class="content">
+                <div class="sub header">День</div>
+              </div>
+            </h4>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="ui header">
+              <div class="content">
+                <div class="sub header">Неделя</div>
+              </div>
+            </h4>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="ui header">
+              <div class="content">
+                <div class="sub header">Месяц</div>
+              </div>
+            </h4>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  {{/partial}}
+</script>
+
+{% endverbatim %}
