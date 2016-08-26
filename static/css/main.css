@@ -82,3 +82,8 @@
     font-size: 1.5em;
   }
 }
+#chartdiv,
+#chartBox {
+  width: 100%;
+  height: 500px;
+}

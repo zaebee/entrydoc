@@ -54,9 +54,9 @@ class HistoDayViewSet(viewsets.ViewSet):
     A viewset for viewing and editing keyword report instances.
     """
     def list(self, request):
-        data = {}
-        result = requests.get('https://www.cryptocompare.com/api/data/histoday/?aggregate=1&e=CCCAGG&fsym=ETH&limit=93&tsym=BTC')
-        #import ipdb;ipdb.set_trace()
+        tsym = request.query_params.get('tsym', 'USD')
+        fsym = request.query_params.get('fsym', 'ETH')
+        result = requests.get('https://www.cryptocompare.com/api/data/histoday/?aggregate=1&e=CCCAGG&fsym=%s&limit=93&tsym=%s' % (fsym, tsym))
         #serializer = GraphicCardSerializer(data, many=True)
         return Response(result.json())
 
