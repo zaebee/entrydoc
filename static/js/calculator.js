@@ -23,6 +23,7 @@ var app = app || {};
     //adapt: [ Ractive.adaptors.Backbone ],
     onrender: function() {
       var self = this;
+      $(this.el).find('[name=userHashRate]').focus();
       $(this.el).find('select').dropdown({
         onChange: function(value, text, $selectedItem) {
           self.set('selectedDevice', value);
