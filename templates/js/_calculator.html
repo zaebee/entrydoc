@@ -19,7 +19,7 @@
     <div class="ui small form">
       <div class="ui labeled input field">
         <div class="ui basic label">Хэшрейт (MH/s)</div>
-        <input type="text" value="{{userHashRate}}" placeholder="в MH/s..">
+        <input on-keypress="isKeyNumber:{{userHashRate}}" type="text" value="{{userHashRate}}" placeholder="в MH/s..">
       </div>
 
       <div class="ui labeled input field">
@@ -66,23 +66,12 @@
           <td>
             <h4 class="ui header">
               <div class="content">
-                <div class="sub header">Час</div>
-              </div>
-            </h4>
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <h4 class="ui header">
-              <div class="content">
                 <div class="sub header">День</div>
               </div>
             </h4>
           </td>
-          <td></td>
-          <td></td>
+          <td>{{earningsDay.toFixed(6)}}</td>
+          <td>${{(earningsDay * stats.priceUsd).toFixed(2)}}</td>
         </tr>
         <tr>
           <td>
@@ -92,8 +81,8 @@
               </div>
             </h4>
           </td>
-          <td></td>
-          <td></td>
+          <td>{{earningsWeek.toFixed(6)}}</td>
+          <td>${{(earningsWeek * stats.priceUsd).toFixed(2)}}</td>
         </tr>
         <tr>
           <td>
@@ -103,8 +92,19 @@
               </div>
             </h4>
           </td>
-          <td></td>
-          <td></td>
+          <td>{{earningsMonth.toFixed(6)}}</td>
+          <td>${{(earningsMonth * stats.priceUsd).toFixed(2)}}</td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="ui header">
+              <div class="content">
+                <div class="sub header">Год</div>
+              </div>
+            </h4>
+          </td>
+          <td>{{earningsYear.toFixed(6)}}</td>
+          <td>${{(earningsYear * stats.priceUsd).toFixed(2)}}</td>
         </tr>
       </tbody>
     </table>
