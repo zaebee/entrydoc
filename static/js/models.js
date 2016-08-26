@@ -2,13 +2,13 @@ var app = app || {};
 
 (function (app) {
 
-  app.Keyword = Backbone.Model.extend({
-    urlRoot: '/api/v1/keywords/',
+  app.HistoDay = Backbone.Model.extend({
+    urlRoot: '/api/v1/histoday/',
   });
 
-  app.Keywords = Backbone.Collection.extend({
-    url: '/api/v1/keywords/',
-    model: app.Keyword
+  app.HistoDays = Backbone.Collection.extend({
+    url: '/api/v1/histoday/',
+    model: app.HistoDay
   });
 
   app.Device = Backbone.Model.extend({

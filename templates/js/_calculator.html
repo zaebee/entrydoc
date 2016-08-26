@@ -4,10 +4,12 @@
 <script id="calculator-box-template" type="text/ractive">
   <div class="left aligned two column row">
     <div class="wide column">
+      <h2 class="ui header center aligned">Расчет сложности</h2>
       {{>calc_form}}
     </div>
 
     <div class="wide column">
+      <h2 class="ui header center aligned">Доходность</h2>
       {{>calc_table}}
     </div>
   </div>
@@ -19,7 +21,7 @@
     <div class="ui small form">
       <div class="ui labeled input field">
         <div class="ui basic label">Хэшрейт (MH/s)</div>
-        <input on-keypress="isKeyNumber:{{userHashRate}}" type="text" value="{{userHashRate}}" placeholder="в MH/s..">
+        <input name="userHashRate" on-keypress="isKeyNumber:{{userHashRate}}" type="text" value="{{userHashRate}}" placeholder="в MH/s..">
       </div>
 
       <div class="ui labeled input field">
