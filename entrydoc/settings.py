@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'crypto',
+    'front',
+    'wymeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,6 +113,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+DJANGO_FRONT_EDIT_MODE = 'inline'
 
 try:
     from settings_local import *

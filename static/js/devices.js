@@ -8,6 +8,7 @@ var app = app || {};
     el: '#keywordBox',
     template: '#keyword-box-template',
     data: {
+      _: _,
       devices: app.deviceCollection,
     },
     adapt: [ Ractive.adaptors.Backbone ],

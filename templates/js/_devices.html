@@ -22,6 +22,7 @@
       </thead>
       <tbody>
         {{#each devices}}
+        {{#if Algorithm == 'Ethash'}}
         <tr>
           <td>
             <h4 class="ui image header">
@@ -41,8 +42,12 @@
             <a target="_blank" href="https://cryptocompare.com{{Url}}" class="ui primary button">
               Купить карту
             </a>
+            <a href="/calculator/{{Id}}-{{Name.split(' ').join('-')}}" class="ui basic button">
+              Калькулятор
+            </a>
           </td>
         </tr>
+        {{/if}}
         {{/each}}
       </tbody>
       <tfoot>

@@ -2,11 +2,23 @@ var app = app || {};
 
 (function (app) {
 
+  if (window.deviceId) {
+    app.device = new app.Device({id: window.deviceId});
+    app.device.fetch({
+      success: function(model) {
+        console.log(model);
+        app.calculatorBox.set('PowerConsumption', model.get('PowerConsumption'));
+        app.calculatorBox.set('userHashRate', model.get('HashesPerSecond') / 1e6);
+      }
+    });
+  };
   app.calculatorBox = new Ractive({
     el: '#calculatorBox',
     template: '#calculator-box-template',
     data: {
+      _: _,
       stats: {},
+      device: app.device,
     },
     computed: {
       networkHashRate: '${stats.difficulty} / ${stats.blockTime} / 1e9',
@@ -20,16 +32,10 @@ var app = app || {};
       earningsMonth: '${earningsDay} * 30',
       earningsYear: '${earningsDay} * 365',
     },
-    //adapt: [ Ractive.adaptors.Backbone ],
+    adapt: [ Ractive.adaptors.Backbone ],
     onrender: function() {
       var self = this;
       $(this.el).find('[name=userHashRate]').focus();
-      $(this.el).find('select').dropdown({
-        onChange: function(value, text, $selectedItem) {
-          self.set('selectedDevice', value);
-        }
-      });
-
     },
   });
 
