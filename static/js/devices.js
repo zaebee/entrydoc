@@ -30,6 +30,12 @@ var app = app || {};
 
   app.deviceCollection.fetch();
 
+  app.deviceBox.on({
+    launchModal: function(event) {
+      $('#deviceModal').modal('show');
+      console.log(event);
+    }
+  });
   app.deviceBox.observe({
     selectedDevice: function(deviceId) {
       if (deviceId) {
