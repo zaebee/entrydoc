@@ -2,6 +2,33 @@
 {% verbatim %}
 
 <script id="calculator-box-template" type="text/ractive">
+  {{#if device.Name}}
+  <div class="ui container">
+    <div class="ui centered card">
+      <div class="image">
+        <img src="https://cryptocompare.com{{device.LogoUrl}}">
+      </div>
+      <div class="content">
+        <div class="header">
+          {{device.Name}}
+        </div>
+        <div class="meta">
+          {{device.Company}}
+        </div>
+        <div class="description">
+        <p>
+          Цена: {{device.Cost}}{{device.Currency}}
+        </p>
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="ui one buttons">
+          <div class="ui basic green button">Купить</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
   <div class="left aligned two column row">
     <div class="wide column">
       <h2 class="ui header center aligned">Расчет сложности</h2>
@@ -41,13 +68,13 @@
 
       <div class="ui labeled input field">
         <div class="ui basic label">Мощность</div>
-        <input type="text" value="" placeholder="в ваттах..">
+        <input type="text" value="{{PowerConsumption}}" placeholder="в ваттах..">
       </div>
 
       <!--
       <div class="ui labeled input field">
         <div class="ui basic label">Тариф</div>
-        <input type="text" placeholder="в Руб/КВ/ч..">
+        <input value="{{PowerConsumption}}" type="text" placeholder="в Руб/КВ/ч..">
       </div>
       -->
 

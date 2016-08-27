@@ -24,12 +24,14 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="base.html")),
     url(r'^calculator/$', TemplateView.as_view(template_name="calculator.html"), name='calculator-ethereum'),
+    url(r'^calculator/(?P<id>[\d]+)-(?P<name>[-()_.\w\d]+)/$$', TemplateView.as_view(template_name="calculator.html"), name='calculator-ethereum-detail'),
     url(r'^ethereum/$', TemplateView.as_view(template_name="ethereum.html"), name='coin-ethereum')
 ]
 
 urlpatterns += [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/v1/', include('crypto.urls')),
+    url(r'^front-edit/', include('front.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

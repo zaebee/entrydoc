@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'bot',
     'crypto',
     'djcelery',
+    'front',
+    'wymeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,6 +115,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+DJANGO_FRONT_EDIT_MODE = 'inline'
 
 # CELERY SETTINGS
 BROKER_URL = 'redis://localhost:6379/0'

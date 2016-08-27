@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load front_tags %}
 
 {% block content %}
   <div class="ui vertical stripe segment">
@@ -6,7 +7,11 @@
 
       <div class="row">
         <div class="center aligned column">
-          <h1 class="ui header">Курс Эфириума (eth) - график</h1>
+          {% front_edit "content_header" request.path %}
+            <h1 class="ui header">Курс Эфириума (eth) - график</h1>
+            <p>Короткое описание</p>
+          {% end_front_edit  %}
+          <br>
           <div id="chartBox"></div>
         </div>
       </div>

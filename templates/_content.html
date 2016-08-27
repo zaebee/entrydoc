@@ -1,9 +1,14 @@
+{% load front_tags %}
 <div class="ui vertical stripe segment">
   <div class="ui top aligned stackable grid container">
 
     <div class="row">
       <div class="center aligned column">
-        <h3 class="ui header">Таблица производительности видеокарт для майнинга эфириума</h3>
+        {% front_edit "content_header" request.path %}
+          <h1 class="ui header">Таблица производительности видеокарт для майнинга эфириума</h1>
+          <p>Короткое описание</p>
+        {% end_front_edit  %}
+        <br>
         <div class="ui form" id="keywordBox"></div>
       </div>
     </div>
