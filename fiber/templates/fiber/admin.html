@@ -1,0 +1,28 @@
+{% load fiber_tags i18n %}
+{% load url from future %}
+<div id="df-wpr-layer">
+	<div id="df-layer"></div>
+</div>
+
+<div id="df-wpr-sidebar">
+	<div id="df-sidebar">
+		<div id="df-sidebar-top-section">
+			<p class="logout"><a href="{{ logout_url }}">{% trans 'Log out' %}</a></p>
+			<p class="backend"><a href="{% url 'admin:index' %}" title="{% trans 'Backend' %}"><span class="icon"></span>{% trans 'Backend' %}</a></p>
+		</div>
+		<div id="df-sidebar-page-section">
+			<h2>{% trans "Pages" %}</h2>
+			<div id="df-sidebar-page-tree" class="sidebar-tree"></div>
+		</div>
+		<div id="df-sidebar-content-section">
+			<h2>{% trans "Content" %}</h2>
+			<div id="df-sidebar-content-tree" class="sidebar-tree"></div>
+		</div>
+		<div id="df-sidebar-version"><p>Django Fiber: {% fiber_version %}</p></div>
+	</div>
+	<div id="df-btn-toggle-sidebar"></div>
+</div>
+
+<div id="df-wpr-busy">
+	<div id="df-busy"></div>
+</div>
