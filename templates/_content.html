@@ -1,15 +1,12 @@
-{% load front_tags %}
+{% load fiber_tags %}
 <div class="ui vertical stripe segment">
   <div class="ui top aligned stackable grid container">
 
     <div class="row">
       <div class="column">
-        {% front_edit "content_header" request.path %}
-          <h1 class="ui center aligned header">Таблица производительности видеокарт для майнинга эфириума</h1>
-          <div class="ui center aligned sub header">Короткое описание</div>
-        {% end_front_edit  %}
-        <br>
-        <div class="ui form" id="keywordBox"></div>
+        {% show_page_content "title" %}
+        <hr class="ui hidden divider">
+        {% show_page_content "app_box" %}
       </div>
     </div>
 
