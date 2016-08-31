@@ -42,8 +42,9 @@ INSTALLED_APPS = (
     'compressor',
     'easy_thumbnails',
     'rest_framework',
+    'bot',
     'crypto',
-    'wymeditor',
+    'djcelery',
     'fiber',
 )
 
@@ -124,6 +125,61 @@ STATICFILES_FINDERS = DEFAULT_SETTINGS.STATICFILES_FINDERS + (
         'compressor.finders.CompressorFinder',
 )
 DJANGO_FRONT_EDIT_MODE = 'inline'
+
+# CELERY SETTINGS
+BROKER_URL = 'redis://localhost:6379/0'
+#CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(name)s %(process)d %(message)s'
+    },
+        'simple': {
+            'format': '%(levelname)s %(name)s %(message)s'
+        },
+    },
+
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console':{
+                'level':'DEBUG',
+                'class':'logging.StreamHandler',
+                'formatter': 'simple'
+            },
+        'grab':{
+                'level':'DEBUG',
+                'class':'logging.StreamHandler',
+                'formatter': 'simple'
+            },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
 
 FIBER_METADATA_PAGE_SCHEMA = {
         'title': {
