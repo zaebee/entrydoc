@@ -2,17 +2,16 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  {% load front_tags %}
-  <meta charset="utf-8" />
   {% load i18n staticfiles %}
+  <meta charset="utf-8" />
 
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
   <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
-  <meta name='title' content="{% block meta_title %}{% endblock %}" />
+  <meta name='description' content="{% block meta_description %}{{ fiber_page.meta_description }}{% endblock %}" />
 
-  <title>Эфириум и эфир классик - вся инфа про майнинг, видео карты и курсы криптовалют{% block title %}{% endblock %}</title>
+  <title>{{ fiber_page.doc_title|default:"Эфириум и эфир классик - вся инфа про майнинг, видео карты и курсы криптовалют" }}</title>
 
   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/semantic.css' %}">
   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap-datepicker3.standalone.css' %}">
@@ -21,8 +20,6 @@
   <!-- Included CSS Files (Compressed) -->
   {% block extracss %}{% endblock extracss %}
 
-  <script src="{% static 'js/vendors/modernizr.js' %}"></script>
-  <script src="{% static 'js/vendors/jquery-2.1.4.min.js' %}"></script>
 </head>
 
 <body class="pushable" style="position: static;">
@@ -44,6 +41,8 @@
   {% include 'js/_chart.html' %}
   {% include '_device_modal.html' %}
 
+  <script src="{% static 'js/vendors/modernizr.js' %}"></script>
+  <script src="{% static 'js/vendors/jquery-2.1.4.min.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
 
@@ -54,6 +53,8 @@
 
   <script src="http://cdn.ractivejs.org/latest/ractive.js"></script>
   <script src="http://cdn.jsdelivr.net/ractive.adaptors-backbone/latest/ractive-adaptors-backbone.min.js"></script>
+
+  <script src="//alpha61.com/ethereum.json"></script>
 
   <script type="text/javascript" src="{% static 'js/vendors/jquery.cookie.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/vendors/jquery.tablesort.min.js' %}"></script>
@@ -70,8 +71,6 @@
   <script type="text/javascript" src="{% static 'js/chart.js' %}"></script>
 
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-  {% front_edit_scripts editor="ace" %}
-
 
   {% block extrajs %}{% endblock %}
 

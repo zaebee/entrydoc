@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,12 +38,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mptt',
+    'compressor',
+    'easy_thumbnails',
     'rest_framework',
     'bot',
     'crypto',
     'djcelery',
-    'front',
-    'wymeditor',
+    'fiber',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,6 +57,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'fiber.middleware.ObfuscateEmailAddressMiddleware',
+    'fiber.middleware.AdminPageMiddleware',
 )
 
 ROOT_URLCONF = 'entrydoc.urls'
@@ -111,9 +116,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static_prod')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_FINDERS = DEFAULT_SETTINGS.STATICFILES_FINDERS + (
+        'compressor.finders.CompressorFinder',
 )
 DJANGO_FRONT_EDIT_MODE = 'inline'
 
@@ -171,6 +180,15 @@ LOGGING = {
             'propagate': True,
         },
     }
+
+FIBER_METADATA_PAGE_SCHEMA = {
+        'title': {
+                    'widget': 'select',
+                    'values': ['option1', 'option2', 'option3',],
+                },
+        'description': {
+                    'widget': 'textarea',
+                },
 }
 
 try:

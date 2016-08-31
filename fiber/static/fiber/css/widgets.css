@@ -1,0 +1,103 @@
+/* ---[ CKEditor 4 ]--- */
+
+.cke_chrome {
+	float: left;
+}
+
+.cke_chrome .cke_top {
+	padding-right: 0;
+}
+
+.cke_button__fpagelink_icon {
+	background: url('../js/ckeditor-4.5.4-full/skins/moono/icons.png') no-repeat 0 -1440px !important;
+}
+
+.cke_button__ffilelink_icon {
+	background: url('../js/ckeditor-4.5.4-full/skins/moono/icons.png') no-repeat 0 -456px !important;
+}
+
+.cke_button__fcustomlink_icon {
+	background: url('../js/ckeditor-4.5.4-full/skins/moono/icons.png') no-repeat 0 -1248px !important;
+}
+
+.cke_button__funlink_icon {
+	background: url('../js/ckeditor-4.5.4-full/skins/moono/icons.png') no-repeat 0 -1272px !important;
+}
+
+.cke_button__fimagelink_icon,
+.cke_button__fimage_icon {
+	background: url('../js/ckeditor-4.5.4-full/skins/moono/icons.png') no-repeat 0 -936px !important;
+}
+
+.cke_button__fimagelink_icon:before,
+.cke_button__fpagelink_icon:before,
+.cke_button__ffilelink_icon:before {
+	display: inline-block;
+	content: "";
+	margin: 6px 0 0 5px;
+	width: 16px;
+	height: 16px;
+	background: url('../js/ckeditor-4.5.4-full/skins/moono/icons.png') no-repeat 0 -1248px !important;
+}
+
+.cke_hidpi .cke_button__fpagelink_icon,
+.cke_hidpi .cke_button__ffilelink_icon,
+.cke_hidpi .cke_button__fcustomlink_icon,
+.cke_hidpi .cke_button__funlink_icon,
+.cke_hidpi .cke_button__fimagelink_icon,
+.cke_hidpi .cke_button__fimage_icon,
+.cke_hidpi .cke_button__fimagelink_icon:before,
+.cke_hidpi .cke_button__fpagelink_icon:before,
+.cke_hidpi .cke_button__ffilelink_icon:before {
+	background-image: url('../js/ckeditor-4.5.4-full/skins/moono/icons_hidpi.png') !important;
+	background-size: 16px !important;
+}
+
+.cke_ltr .cke_button .cke_button_label  { display: none !important; }
+
+/* ---[ Combobox ]--- */
+
+.ui-menu .ui-menu-item {
+	list-style: none;
+}
+.ui-button { margin-left: -1px; }
+.ui-button-icon-only .ui-button-text { padding: .15em; }
+.ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; }
+
+
+/* ---[ JSON widget ]--- */
+
+.fiber-json-widget table {
+	margin-bottom: 1em;
+}
+
+.fiber-json-widget input[type=text],
+.fiber-json-widget textarea {
+	width: 20em;
+}
+
+.fiber-json-widget select {
+	width: 20.8em;
+}
+
+.fiber-json-widget .ui-autocomplete-input {
+	width: 17.9em;
+}
+
+.fiber-json-widget a.deletelink {
+	margin-left: 5px;
+	cursor: pointer;
+	color: #cc3434
+}
+
+.fiber-json-widget a.add-btn {
+	cursor: pointer;
+	margin-left: 5px;
+	color: #5b80b2;
+  background: url("../../admin/img/icon_addlink.gif") no-repeat scroll 0 0.25em transparent;
+  padding-left: 12px;
+}
+
+.fiber-json-widget tr.add-row {
+	background: url("../../admin/img/nav-bg.gif") repeat-x scroll left top #e1e1e1;
+}

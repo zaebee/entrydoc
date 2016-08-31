@@ -22,16 +22,22 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="base.html")),
-    url(r'^calculator/$', TemplateView.as_view(template_name="calculator.html"), name='calculator-ethereum'),
+    #url(r'^$', TemplateView.as_view(template_name="base.html")),
+    #url(r'^calculator/$', TemplateView.as_view(template_name="calculator.html"), name='calculator-ethereum'),
     url(r'^calculator/(?P<id>[\d]+)-(?P<name>[-()_.\w\d]+)/$$', TemplateView.as_view(template_name="calculator.html"), name='calculator-ethereum-detail'),
-    url(r'^ethereum/$', TemplateView.as_view(template_name="ethereum.html"), name='coin-ethereum')
+    #url(r'^ethereum/$', TemplateView.as_view(template_name="ethereum.html"), name='coin-ethereum')
 ]
 
 urlpatterns += [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/fiber/', include('fiber.admin_urls')),
     url(r'^api/v1/', include('crypto.urls')),
-    url(r'^front-edit/', include('front.urls')),
+    url(r'^api/v2/', include('fiber.rest_api.urls')),
+]
+
+urlpatterns += [
+    url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': ('fiber',),}),
+    url(r'', 'fiber.views.page'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

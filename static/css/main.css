@@ -87,3 +87,6 @@
   width: 100%;
   height: 500px;
 }
+.pushable .pusher {
+    background: #fff;
+}

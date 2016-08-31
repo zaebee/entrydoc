@@ -1,15 +1,7 @@
+{% load fiber_tags %}
 <div class="ui inverted vertical center aligned segment">
 
   <div class="ui container">
-    <div class="ui large secondary inverted pointing menu">
-      <a class="toc item">
-        <i class="sidebar icon"></i>
-      </a>
-      <a href="/" class="active item">Главная</a>
-      <a href="/" class="item">Таблица видеокарт</a>
-      <a href="{% url 'calculator-ethereum' %}" class="item">Калькулятор эфириума</a>
-      <a href="{% url 'coin-ethereum' %}" class="item">Курс эфириума</a>
-      <a class="item">Биржи и обменники</a>
-    </div>
+    {% show_menu "mainmenu" 1 2 %}
   </div>
 </div>
