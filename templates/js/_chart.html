@@ -2,13 +2,29 @@
 {% verbatim %}
 
 <script id="chart-box-template" type="text/ractive">
-  <div class="left aligned column">
+<div class="ui equal width grid">
+  <div class="column">
     <div class="ui basic buttons">
-    <div on-click="changeChart:'USD'" class="ui button {{#if tsym == 'USD'}}active{{/if}}">ETH/USD</div>
+      <div on-click="changeChart:'USD'" class="ui button {{#if tsym == 'USD'}}active{{/if}}">ETH/USD</div>
       <div on-click="changeChart:'BTC'" class="ui button {{#if tsym == 'BTC'}}active{{/if}}">ETH/BTC</div>
       <div on-click="changeChart:'RUB'" class="ui button {{#if tsym == 'RUB'}}active{{/if}}">ETH/RUB</div>
     </div>
   </div>
-  <div id="chartdiv"></div>												
+  <div class="right aligned column">
+    <div class="ui mini horizontal blue statistic">
+      <div class="value">
+        1 ETH = 
+      </div>
+    </div>
+    {{#each price.Data}}
+    <div class="ui mini horizontal statistic">
+      <div class="value">
+      {{Price}} <i class="{{currencies[Symbol]}} icon"></i>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+<div id="chartdiv"></div>												
 </script>
 {% endverbatim %}

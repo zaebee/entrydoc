@@ -11,6 +11,15 @@ var app = app || {};
     model: app.HistoDay
   });
 
+  app.Price = Backbone.Model.extend({
+    urlRoot: '/api/v1/price/',
+  });
+
+  app.Prices = Backbone.Collection.extend({
+    url: '/api/v1/price/',
+    model: app.Price
+  });
+
   app.Device = Backbone.Model.extend({
     urlRoot: '/api/v1/devices/',
   });
