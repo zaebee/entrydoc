@@ -2,6 +2,13 @@ var app = app || {};
 
 (function (app) {
 
+  var priceModel = new app.Price;
+
+  var currencies = {
+    USD: 'dollar',
+    BTC: 'bitcoin',
+    RUB: 'ruble',
+  }
   app.loadChart = function (histoDayModel) {
     var chartData = [];
 
@@ -109,11 +116,15 @@ var app = app || {};
     el: '#chartBox',
     template: '#chart-box-template',
     data: {
+      _: _,
       tsym: 'USD',
+      price: priceModel,
+      currencies: currencies,
     },
     adapt: [ Ractive.adaptors.Backbone ],
     onrender: function() {
       var self = this;
+      priceModel.fetch();
       app.histoDay.fetch({
         data: {
           tsym: this.get('tsym'),
