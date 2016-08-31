@@ -180,6 +180,7 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
 
 FIBER_METADATA_PAGE_SCHEMA = {
         'title': {
