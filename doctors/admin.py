@@ -20,7 +20,7 @@ class ScheduleAdmin(admin.ModelAdmin):
         model = Schedule
 
 class PatientAdmin(admin.ModelAdmin):
-    #list_display = ('id', 'first_name', 'last_name', 'speciality')
+    list_display = ('id', '__str__', 'info')
     #list_display_links = ('id', 'first_name')
 
     class Meta:

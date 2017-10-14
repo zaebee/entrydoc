@@ -6,8 +6,8 @@ from django.core.exceptions import ValidationError
 def validate_working_day(value):
     day_of_week = value.weekday()
     print(day_of_week)
-    if day_of_week < 0 or day_of_week > 4:
-        raise ValidationError('%s это не рабочий день' % value)
+    # if day_of_week != 0 or day_of_week != 6:
+    #    raise ValidationError('%s это не рабочий день' % value)
     delta = (value - value.today()).days
     if delta < 0:
         raise ValidationError('%s в прошлые дни приема нет' % value)
@@ -42,7 +42,20 @@ class Patient(models.Model):
 
 
 class Schedule(models.Model):
-    HOURS = tuple(map(lambda x: (x, '%s:00' % x), range(9,19)))
+    # HOURS = tuple(map(lambda x: (x, '%s:00' % x), range(9,19)))
+    HOURS = (
+        (10, '10:00'),
+        (105, '10:30'),
+        (11, '11:00'),
+        (115, '11:30'),
+        (12, '12:00'),
+        (125, '12:30'),
+        (13, '13:00'),
+        (135, '13:30'),
+        (14, '14:00'),
+        (145, '14:30')
+    )
+
 
     day_of_week = models.DateField('День недели', validators=[validate_working_day])
     hour = models.PositiveIntegerField('Время', choices=HOURS)

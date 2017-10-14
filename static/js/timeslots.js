@@ -39,7 +39,6 @@ var app = app || {};
       var $node = $(event.node);
       var schedule = new app.Schedule({
         patient: this.get('patient'),
-        hour: this.get('patient'),
         doctor: this.get('selectedDoctor'),
         day_of_week: this.get('selectedDay'),
         hour: event.context.hour,

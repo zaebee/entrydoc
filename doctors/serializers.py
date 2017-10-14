@@ -21,7 +21,8 @@ class PatientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Patient
-        fields = ('first_name', 'last_name', 'info')
+        # fields = ('first_name', 'last_name', 'info')
+        fields = ('id',)
 
 
 class ScheduleSerializer(serializers.ModelSerializer):
@@ -31,7 +32,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Schedule
-        #fields = ('id', 'hour', 'day_of_week', 'doctors', 'patient')
+        # fields = ('id', 'hour', 'hour_title', 'day_of_week', 'doctor', 'patient')
 
     def create(self, validated_data):
         patient = Patient.objects.create(**validated_data.pop('patient'))

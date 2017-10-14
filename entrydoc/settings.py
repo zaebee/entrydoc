@@ -25,7 +25,10 @@ SECRET_KEY = 'ghbg9knnns+xp69gc=3k8+sqlqb3!3cm-qtdg6k#+nc(_(et-v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'naporova.opt.my',
+    '*.opt.my'
+]
 
 
 # Application definition
