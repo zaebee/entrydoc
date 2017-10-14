@@ -10,4 +10,3 @@ router.register(r'schedules', views.ScheduleViewSet)
 router.register(r'patients', views.PatientViewSet)
 
 urlpatterns = router.urls
-

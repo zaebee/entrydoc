@@ -23,14 +23,15 @@ class Doctor(models.Model):
         verbose_name_plural = 'Доктора'
 
     def __str__(self):
-        return 'Доктор: %s %s' % (self.first_name, self.last_name)
+        return 'Мастер: %s %s' % (self.first_name, self.last_name)
 
 
 class Patient(models.Model):
     first_name = models.CharField('Имя', max_length=200)
     last_name = models.CharField('Фамилия', max_length=200)
     info = models.TextField('Доп.инфа', blank=True, null=True)
-    doctors = models.ManyToManyField(Doctor, through='Schedule', related_name='patients',
+    doctors = models.ManyToManyField(Doctor, through='Schedule',
+                                     related_name='patients',
                                      blank=True, null=True)
 
     class Meta:
@@ -38,7 +39,7 @@ class Patient(models.Model):
         verbose_name_plural = 'Пациенты'
 
     def __str__(self):
-        return 'Пациент: %s %s' % (self.first_name, self.last_name)
+        return '%s %s' % (self.first_name, self.last_name)
 
 
 class Schedule(models.Model):
@@ -71,4 +72,3 @@ class Schedule(models.Model):
     def __str__(self):
         return 'Запись на прием %s в %s' % (self.day_of_week.strftime('%d.%m.%Y'),
                                                           self.get_hour_display())
-
