@@ -6,7 +6,7 @@
     <div class="content">
       <div class="center">
         <h1 class="ui inverted icon header">
-          Вы успешно записаны к врачу
+          Вы успешно записаны на сьемку
         </h1>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
       <div class="content order">
       {{#if !disabled(hour)}}
-        <p>Запись на прием {{formatDay(selectedDay, 'DD MMM YYYY')}}</p>
+        <p>Запись {{formatDay(selectedDay, 'DD MMMM')}}</p>
 
         {{#if errors}}
         <div class="ui error message">
@@ -32,7 +32,7 @@
             <li>{{@key}}. {{this}}</li>
             {{/each}}
             {{#if errors.doctor}}
-            <li>Вы не выбрали доктора</li>
+            <li>Вы не выбрали фотографа</li>
             {{/if}}
             {{#if errors.day_of_week}}
             <li>Вы не выбрали день недели</li>
@@ -42,7 +42,7 @@
         {{/if}}
         {{#if success}}
         <div class="ui success message">
-          <div class="header">Вы записаны на прием к врачу</div>
+          <div class="header">Вы записаны на сьемку. Фотограф свяжется с вами для подтверждения</div>
         </div>
         {{/if}}
 
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="field">
-            <textarea rows="2" placeholder="Дополнительная информация" value="{{patient.info}}">{{patient.info}}</textarea>
+            <textarea rows="2" placeholder="как с вами связаться" value="{{patient.info}}">{{patient.info}}</textarea>
           </div>
           <button on-click="submit" class="ui button" type="submit">Записаться</button>
         </div>
