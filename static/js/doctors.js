@@ -21,7 +21,15 @@ var app = app || {};
     },
   });
 
-  app.doctorCollection.fetch();
+  app.doctorCollection.fetch({
+    success: function (response) {
+      var first = app.doctorBox.get('doctors.0');
+      app.doctorBox.set('selectedDoctor', first.id);
+      setTimeout(function() {
+        $('select').dropdown('set selected', first.id);
+      }, 450);
+    }
+  });
 
   app.doctorBox.observe({
     selectedDoctor: function(doctorId) {
