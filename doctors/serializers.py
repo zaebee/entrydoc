@@ -21,8 +21,8 @@ class PatientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Patient
-        # fields = ('first_name', 'last_name', 'info')
-        fields = ('id',)
+        fields = ('first_name', 'last_name', 'info')
+        # fields = ('id',)
 
 
 class ScheduleSerializer(serializers.ModelSerializer):
